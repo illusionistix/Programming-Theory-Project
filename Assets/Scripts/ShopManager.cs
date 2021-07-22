@@ -94,7 +94,7 @@ public class ShopManager : MonoBehaviour
 
     private void QuitShopping()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 
     // Update is called once per frame

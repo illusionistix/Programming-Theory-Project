@@ -8,6 +8,7 @@ using UnityEditor;
 
 public class GameManager : MonoBehaviour
 {
+
     [SerializeField] private PlayerController playerPrefab;
     private PlayerController player;
 

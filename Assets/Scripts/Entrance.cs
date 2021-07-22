@@ -17,7 +17,7 @@ public class Entrance : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
     }
 
@@ -26,6 +26,14 @@ public class Entrance : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             shopEntranceCanvas.gameObject.SetActive(true);
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            shopEntranceCanvas.gameObject.SetActive(false);
         }
     }
 }

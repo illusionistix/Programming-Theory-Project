@@ -16,10 +16,10 @@ public class PlayerController : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
-        
-        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * horizontalInput);        
+
+        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * horizontalInput);
+
         transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * verticalInput);
-        
     }
 
     // Update is called once per frame
