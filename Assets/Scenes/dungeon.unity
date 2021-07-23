@@ -166,7 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97e62897cf4f8554a96a1b68dba28a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPrefab: {fileID: -1368458744044356584, guid: 75778d733dffb0c408a0425d645e19f5, type: 3}
+  playerPrefab: {fileID: -1545838274234361291, guid: 75778d733dffb0c408a0425d645e19f5, type: 3}
   coinPrefab: {fileID: 6768245908250818378, guid: b87b8509412a0b048a60a30b2bc5834e, type: 3}
   scoreText: {fileID: 1889856057}
 --- !u!1 &69291412
@@ -952,7 +952,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 9bc823a5287c8d34b8409b5020be435c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -5,28 +5,59 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float rotationSpeed = 100f;
+
+    private Animator playerAnim;
 
     // Start is called before the first frame update
     void Start()
     {
-        //moveSpeed = 5f;
+        playerAnim = GetComponent<Animator>();
     }
 
     //ABSTRACTION
-    private void MoveAround()
+    private void MovePlayer()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
+        //float horizontalInput = Input.GetAxis("Horizontal");
+        //transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * horizontalInput);
+
         float verticalInput = Input.GetAxis("Vertical");
 
-        transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * horizontalInput);
+        if (verticalInput > Mathf.Epsilon)
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * verticalInput);
+            playerAnim.SetBool("idle_b", false);
+        }
+        else if (verticalInput < 0 - Mathf.Epsilon) 
+        {
+            transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * verticalInput);
+            playerAnim.SetBool("idle_b", false);
+            playerAnim.SetBool("retreating_b", true);
+        }
+        else
+        {
+            playerAnim.SetBool("idle_b", true);
+            playerAnim.SetBool("retreating_b", false);
+        }
+    }
 
-        transform.Translate(Vector3.forward * Time.deltaTime * moveSpeed * verticalInput);
+    void RotatePlayer()
+    {
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime);
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        MoveAround();
+        MovePlayer();
+        RotatePlayer();
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        spawnPos = new Vector3(0f, 1f, 0f);
+        spawnPos = new Vector3(0f, 0f, 0f);
         
         SpawnPlayer();
         SpawnCoins();
