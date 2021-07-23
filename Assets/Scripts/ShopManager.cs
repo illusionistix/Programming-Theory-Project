@@ -9,8 +9,10 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject[] itemPrefabs;
     [SerializeField] private Text[] itemTexts;
     [SerializeField] private Text scoreText;
+
     private GameObject item;
     private Vector3 spawnPos;
+
     private int index;
     private int price;
 
@@ -21,6 +23,7 @@ public class ShopManager : MonoBehaviour
         SpawnItem(Random.Range(0, 3));
     }
 
+    //ABSTRACTION
     private void SpawnItem(int i)
     {
         item = Instantiate(itemPrefabs[i], spawnPos, itemPrefabs[i].transform.rotation);
@@ -29,6 +32,7 @@ public class ShopManager : MonoBehaviour
 
     }
 
+    //ABSTRACTION
     private void SelectNextItem()
     {
         itemTexts[index].gameObject.SetActive(false);
@@ -47,6 +51,7 @@ public class ShopManager : MonoBehaviour
 
     }
 
+    //ABSTRACTION
     private void SelectPreviousItem()
     {
         itemTexts[index].gameObject.SetActive(false);
@@ -65,6 +70,7 @@ public class ShopManager : MonoBehaviour
 
     }
 
+    //ABSTRACTION
     private void SetPrice()
     {
         if (index == 0)
@@ -81,17 +87,20 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    //ABSTRACTION
     private void BuyItem()
     {
         SetPrice();
         MainManager.Instance.score -= price;
     }
 
+    //ABSTRACTION
     private void UpdateScoreText()
     {
         scoreText.text = "$: " + MainManager.Instance.score;
     }
 
+    //ABSTRACTION
     private void QuitShopping()
     {
         SceneManager.LoadScene(1);

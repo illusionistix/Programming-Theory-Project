@@ -5,7 +5,25 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
-    public int score = 0;
+    //ENCAPSULATION
+    private int m_score = 0;
+    public int score {
+
+        get { return m_score; }
+
+        set {
+            
+                if (value < 0)
+                {
+                    Debug.Log("Not enough cash!");
+                }
+                else
+                {
+                    m_score = value;
+                }
+              
+            } 
+    }
     public static MainManager Instance { get; private set; }
 
     private void Awake()

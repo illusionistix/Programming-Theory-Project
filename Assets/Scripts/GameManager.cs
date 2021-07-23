@@ -10,42 +10,39 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField] private PlayerController playerPrefab;
-    private PlayerController player;
-
     [SerializeField] private GameObject coinPrefab;
-    private GameObject coin;
-
     [SerializeField] private Text scoreText;
 
     private Vector3 spawnPos;
     private Vector3 randomPos;
 
-    //private int score;
-
     // Start is called before the first frame update
     void Start()
     {
         spawnPos = new Vector3(0f, 1f, 0f);
+        
         SpawnPlayer();
-        //randomPos = new Vector3(Random.Range(-10f, 10f), 1f, Random.Range(10f, 20f));
         SpawnCoins();
         
     }
 
+    //ABSTRACTION
     private void SpawnPlayer()
     {
-        player = Instantiate(playerPrefab, spawnPos, playerPrefab.transform.rotation);
+        Instantiate(playerPrefab, spawnPos, playerPrefab.transform.rotation);
     }
 
+    //ABSTRACTION
     private void SpawnCoins()
     {
         for (int i = 0; i < 10; i++)
         {
             randomPos = new Vector3(Random.Range(-10f, 10f), 1f, Random.Range(10f, 20f));
-            coin = Instantiate(coinPrefab, randomPos, coinPrefab.transform.rotation);
+            Instantiate(coinPrefab, randomPos, coinPrefab.transform.rotation);
         }
     }
 
+    //ABSTRACTION
     private void QuitPlaying()
     {
 #if UNITY_EDITOR
@@ -55,6 +52,7 @@ public class GameManager : MonoBehaviour
 #endif
     }
 
+    //ABSTRACTION
     private void UpdateScoreText()
     {
         scoreText.text = "$: " + MainManager.Instance.score;
