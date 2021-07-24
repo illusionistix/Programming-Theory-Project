@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private Text scoreText;
     [SerializeField] private Image energyBar;
+    [SerializeField] private Enemy enemyPrefab;
 
     private Vector3 spawnPos;
     private Vector3 randomPos;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
         
         SpawnPlayer();
         SpawnCoins();
+        SpawnEnemies(1);
         
     }
 
@@ -43,6 +45,15 @@ public class GameManager : MonoBehaviour
         {
             randomPos = new Vector3(Random.Range(-10f, 10f), 1f, Random.Range(10f, 20f));
             Instantiate(coinPrefab, randomPos, coinPrefab.transform.rotation);
+        }
+    }
+
+    //ABSTRACTION
+    private void SpawnEnemies(int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Instantiate(enemyPrefab, randomPos, enemyPrefab.transform.rotation);
         }
     }
 

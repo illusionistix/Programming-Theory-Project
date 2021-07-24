@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1760566427463571811}
   - component: {fileID: 2828093627323948753}
+  - component: {fileID: -3007778063693027224}
   m_Layer: 0
   m_Name: Shopping Cart
   m_TagString: Untagged
@@ -45,6 +46,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 2, z: 4}
   m_Center: {x: 0, y: 1.25, z: 0}
+--- !u!114 &-3007778063693027224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7937937454758818391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e4387cffa7bf484081d71b12f7179e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!1001 &2622376966505331317
 PrefabInstance:
   m_ObjectHideFlags: 0

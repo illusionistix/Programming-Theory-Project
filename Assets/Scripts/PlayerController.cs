@@ -65,7 +65,6 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Coin"))
         {
             MainManager.Instance.score += 10;
-            MainManager.Instance.energy -= 10f;
             Destroy(collision.gameObject);
         }
     }

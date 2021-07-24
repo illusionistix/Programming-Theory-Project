@@ -170,6 +170,7 @@ MonoBehaviour:
   coinPrefab: {fileID: 6768245908250818378, guid: b87b8509412a0b048a60a30b2bc5834e, type: 3}
   scoreText: {fileID: 1889856057}
   energyBar: {fileID: 358185599}
+  enemyPrefab: {fileID: -3007778063693027224, guid: 4d024dcef4eb9af419d2ce5ccacc7245, type: 3}
 --- !u!1 &69291412
 GameObject:
   m_ObjectHideFlags: 0
