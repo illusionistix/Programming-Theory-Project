@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerController playerPrefab;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private Text scoreText;
+    [SerializeField] private Text[] itemTexts;
     [SerializeField] private Image energyBar;
     [SerializeField] private Canvas inventory;
     [SerializeField] private Enemy enemyPrefab;
@@ -97,6 +98,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    private void InventoryUpdateItemTexts()
+    {
+        itemTexts[0].text = MainManager.Instance.bananaCount.ToString();
+        itemTexts[1].text = MainManager.Instance.appleCount.ToString();
+        itemTexts[2].text = MainManager.Instance.crateCount.ToString();
+    }
+
     //ABSTRACTION
     private void QuitPlaying()
     {
@@ -122,5 +130,6 @@ public class GameManager : MonoBehaviour
 
         UpdateScoreText();
         UpdateEnergyBar();
+        InventoryUpdateItemTexts();
     }
 }

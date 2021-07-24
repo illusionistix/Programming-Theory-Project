@@ -36,7 +36,7 @@ public class MainManager : MonoBehaviour
         {
             if (value < 0)
             {
-                Debug.Log("Technically, You just died!");
+                Debug.Log("Technically, the player character just died!");
             }
             else if (value > 100)
             {
@@ -46,6 +46,84 @@ public class MainManager : MonoBehaviour
             {
                 m_energy = value;
             }
+        }
+    }
+
+    //ENCAPSULATION
+    private int m_bananaCount = 0;
+    public int bananaCount
+    {
+
+        get { return m_bananaCount; }
+
+        set
+        {
+
+            if (value > 99)
+            {
+                Debug.Log("Max bananas!");
+            }
+            else if (value < 0)
+            {
+                Debug.Log("Just used the last banana!");
+            }
+            else
+            {
+                m_bananaCount = value;
+            }
+
+        }
+    }
+
+    //ENCAPSULATION
+    private int m_appleCount = 0;
+    public int appleCount
+    {
+
+        get { return m_appleCount; }
+
+        set
+        {
+
+            if (value > 99)
+            {
+                Debug.Log("Max apples!");
+            }
+            else if (value < 0)
+            {
+                Debug.Log("Just used the last apple!");
+            }
+            else
+            {
+                m_appleCount = value;
+            }
+
+        }
+    }
+
+    //ENCAPSULATION
+    private int m_crateCount = 0;
+    public int crateCount
+    {
+
+        get { return m_crateCount; }
+
+        set
+        {
+
+            if (value > 99)
+            {
+                Debug.Log("Max supply crates!");
+            }
+            else if (value < 0)
+            {
+                Debug.Log("Just used the last supply crate!");
+            }
+            else
+            {
+                m_crateCount = value;
+            }
+
         }
     }
 

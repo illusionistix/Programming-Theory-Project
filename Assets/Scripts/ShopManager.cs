@@ -105,11 +105,28 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    private void AddItemToInventory()
+    {
+        if (index == 0)
+        {
+            MainManager.Instance.bananaCount += 1;
+        }
+        else if (index == 1)
+        {
+            MainManager.Instance.appleCount += 1;
+        }
+        else if (index == 2)
+        {
+            MainManager.Instance.crateCount += 1;
+        }
+    }
+
     //ABSTRACTION
     private void BuyItem()
     {
         SetPrice();
         SetEnergyGain();
+        AddItemToInventory();
         MainManager.Instance.score -= price;
         MainManager.Instance.energy += energy;
     }
@@ -131,7 +148,7 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            energyBar.transform.localScale = new Vector3(100, 1, 1);
+            energyBar.transform.localScale = new Vector3(1, 1, 1);
         }
     }
 
