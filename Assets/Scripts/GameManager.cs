@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     private Vector3 randomPos;
     private float energy;
     private bool isInventoryActive;
+    private static int spawnCount = 1;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +34,7 @@ public class GameManager : MonoBehaviour
         
         SpawnPlayer();
         SpawnCoins();
-        SpawnEnemies(1);
+        SpawnEnemies(spawnCount);
         
     }
 
@@ -58,7 +59,13 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < count; i++)
         {
+            randomPos = new Vector3(Random.Range(-10f, 10f), 0f, Random.Range(5f, 20f));
             Instantiate(enemyPrefab, randomPos, enemyPrefab.transform.rotation);
+        }
+
+        if (spawnCount < 5)
+        {
+            spawnCount += 1;
         }
     }
 

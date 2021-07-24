@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
+    //ENCAPSULATION
     public int bananaEnergyGain { get; private set; }
     public int appleEnergyGain { get; private set; }
     public int crateEnergyGain { get; private set; }
