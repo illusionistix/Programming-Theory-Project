@@ -18,9 +18,6 @@ public class PlayerController : MonoBehaviour
     //ABSTRACTION
     private void MovePlayer()
     {
-        //float horizontalInput = Input.GetAxis("Horizontal");
-        //transform.Translate(Vector3.right * Time.deltaTime * moveSpeed * horizontalInput);
-
         float verticalInput = Input.GetAxis("Vertical");
 
         if (verticalInput > Mathf.Epsilon)
@@ -41,6 +38,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    //ABSTRACTION
     void RotatePlayer()
     {
         if (Input.GetKey(KeyCode.LeftArrow))

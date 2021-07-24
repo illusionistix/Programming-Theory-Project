@@ -73,6 +73,7 @@ public class GameManager : MonoBehaviour
         scoreText.text = "$: " + MainManager.Instance.score;
     }
 
+    //ABSTRACTION
     private void UpdateEnergyBar()
     {
         energy = MainManager.Instance.energy;

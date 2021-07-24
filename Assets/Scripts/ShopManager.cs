@@ -9,12 +9,14 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private GameObject[] itemPrefabs;
     [SerializeField] private Text[] itemTexts;
     [SerializeField] private Text scoreText;
+    [SerializeField] private Image energyBar;
 
     private GameObject item;
     private Vector3 spawnPos;
 
     private int index;
     private int price;
+    private float energy;
 
     // Start is called before the first frame update
     void Start()
@@ -87,17 +89,50 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    private void SetEnergyGain()
+    {
+        if (index == 0)
+        {
+            energy = 25;
+        }
+        else if (index == 1)
+        {
+            energy = 15;
+        }
+        else if (index == 2)
+        {
+            energy = 50;
+        }
+    }
+
     //ABSTRACTION
     private void BuyItem()
     {
         SetPrice();
+        SetEnergyGain();
         MainManager.Instance.score -= price;
+        MainManager.Instance.energy += energy;
     }
 
     //ABSTRACTION
     private void UpdateScoreText()
     {
         scoreText.text = "$: " + MainManager.Instance.score;
+    }
+
+    //ABSTRACTION
+    private void UpdateEnergyBar()
+    {
+        energy = MainManager.Instance.energy;
+
+        if (energy < 100)
+        {
+            energyBar.transform.localScale = new Vector3(energy / 100, 1, 1);
+        }
+        else
+        {
+            energyBar.transform.localScale = new Vector3(100, 1, 1);
+        }
     }
 
     //ABSTRACTION
@@ -130,5 +165,6 @@ public class ShopManager : MonoBehaviour
         }
 
         UpdateScoreText();
+        UpdateEnergyBar();
     }
 }

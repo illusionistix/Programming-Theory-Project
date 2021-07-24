@@ -25,6 +25,7 @@ public class MainManager : MonoBehaviour
             } 
     }
 
+    //ENCAPSULATION
     private float m_energy = 100f;
 
     public float energy
@@ -35,7 +36,11 @@ public class MainManager : MonoBehaviour
         {
             if (value < 0)
             {
-                Debug.Log("Technically, You are dead!");
+                Debug.Log("Technically, You just died!");
+            }
+            else if (value > 100)
+            {
+                Debug.Log("Max energy reached!");
             }
             else
             {
@@ -44,6 +49,7 @@ public class MainManager : MonoBehaviour
         }
     }
 
+    //ENCAPSULATION
     public static MainManager Instance { get; private set; }
 
     private void Awake()
