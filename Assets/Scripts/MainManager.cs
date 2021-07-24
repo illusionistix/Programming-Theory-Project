@@ -24,6 +24,26 @@ public class MainManager : MonoBehaviour
               
             } 
     }
+
+    private float m_energy = 100f;
+
+    public float energy
+    {
+        get { return m_energy; }
+
+        set
+        {
+            if (value < 0)
+            {
+                Debug.Log("Technically, You are dead!");
+            }
+            else
+            {
+                m_energy = value;
+            }
+        }
+    }
+
     public static MainManager Instance { get; private set; }
 
     private void Awake()
