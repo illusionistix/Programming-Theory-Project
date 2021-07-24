@@ -8,6 +8,7 @@ public class ShopManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] itemPrefabs;
     [SerializeField] private Text[] itemTexts;
+    [SerializeField] private Text[] inventoryTexts;
     [SerializeField] private Text scoreText;
     [SerializeField] private Image energyBar;
 
@@ -89,29 +90,56 @@ public class ShopManager : MonoBehaviour
         }
     }
 
+    //ABSTRACTION
     private void SetEnergyGain()
     {
         if (index == 0)
         {
-            energy = 25;
+            energy = MainManager.Instance.bananaEnergyGain;
         }
         else if (index == 1)
         {
-            energy = 15;
+            energy = MainManager.Instance.appleEnergyGain;
         }
         else if (index == 2)
         {
-            energy = 50;
+            energy = MainManager.Instance.crateEnergyGain;
         }
+    }
+
+    //ABSTRACTION
+    private void AddItemToInventory()
+    {
+        if (index == 0)
+        {
+            MainManager.Instance.bananaCount += 1;
+        }
+        else if (index == 1)
+        {
+            MainManager.Instance.appleCount += 1;
+        }
+        else if (index == 2)
+        {
+            MainManager.Instance.crateCount += 1;
+        }
+    }
+
+    //ABSTRACTION
+    private void PayItem()
+    {
+        MainManager.Instance.score -= price;
     }
 
     //ABSTRACTION
     private void BuyItem()
     {
-        SetPrice();
-        SetEnergyGain();
-        MainManager.Instance.score -= price;
-        MainManager.Instance.energy += energy;
+        if (MainManager.Instance.score > 0)
+        {
+            SetPrice();
+            SetEnergyGain();
+            PayItem();
+            AddItemToInventory();
+        }
     }
 
     //ABSTRACTION
@@ -131,8 +159,16 @@ public class ShopManager : MonoBehaviour
         }
         else
         {
-            energyBar.transform.localScale = new Vector3(100, 1, 1);
+            energyBar.transform.localScale = new Vector3(1, 1, 1);
         }
+    }
+
+    //ABSTRACTION
+    private void InventoryUpdateItemTexts()
+    {
+        inventoryTexts[0].text = MainManager.Instance.bananaCount.ToString();
+        inventoryTexts[1].text = MainManager.Instance.appleCount.ToString();
+        inventoryTexts[2].text = MainManager.Instance.crateCount.ToString();
     }
 
     //ABSTRACTION
@@ -166,5 +202,6 @@ public class ShopManager : MonoBehaviour
 
         UpdateScoreText();
         UpdateEnergyBar();
+        InventoryUpdateItemTexts();
     }
 }
