@@ -12,13 +12,17 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerController playerPrefab;
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private Text scoreText;
+    [SerializeField] private Image energyBar;
 
     private Vector3 spawnPos;
     private Vector3 randomPos;
+    private float energy;
 
     // Start is called before the first frame update
     void Start()
     {
+        energy = 100f;
+
         spawnPos = new Vector3(0f, 0f, 0f);
         
         SpawnPlayer();
@@ -58,6 +62,20 @@ public class GameManager : MonoBehaviour
         scoreText.text = "$: " + MainManager.Instance.score;
     }
 
+    private void UpdateEnergyBar()
+    {
+        energy = MainManager.Instance.energy;
+
+        if (energy > 0)
+        {
+            energyBar.transform.localScale = new Vector3(energy / 100, 1, 0);
+        }
+        else
+        {
+            energyBar.transform.localScale = new Vector3(0, 0, 0);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -67,5 +85,6 @@ public class GameManager : MonoBehaviour
         }
 
         UpdateScoreText();
+        UpdateEnergyBar();
     }
 }
