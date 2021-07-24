@@ -98,11 +98,42 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //ABSTRACTION
     private void InventoryUpdateItemTexts()
     {
         itemTexts[0].text = MainManager.Instance.bananaCount.ToString();
         itemTexts[1].text = MainManager.Instance.appleCount.ToString();
         itemTexts[2].text = MainManager.Instance.crateCount.ToString();
+    }
+
+    //ABSTRACTION
+    private void UseBananaItem()
+    {
+        if (MainManager.Instance.bananaCount > 0 && MainManager.Instance.energy < 100)
+        {
+            MainManager.Instance.energy += MainManager.Instance.bananaEnergyGain;
+            MainManager.Instance.bananaCount -= 1;
+        }        
+    }
+
+    //ABSTRACTION
+    private void UseAppleItem()
+    {
+        if (MainManager.Instance.appleCount > 0 && MainManager.Instance.energy < 100)
+        {
+            MainManager.Instance.energy += MainManager.Instance.appleEnergyGain;
+            MainManager.Instance.appleCount -= 1;
+        }        
+    }
+
+    //ABSTRACTION
+    private void UseCrateItem()
+    {
+        if (MainManager.Instance.crateCount > 0 && MainManager.Instance.energy < 100)
+        {
+            MainManager.Instance.energy += MainManager.Instance.crateEnergyGain;
+            MainManager.Instance.crateCount -= 1;
+        }
     }
 
     //ABSTRACTION
@@ -123,7 +154,22 @@ public class GameManager : MonoBehaviour
             ToggleInventory();
         }
 
-            if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            UseBananaItem();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            UseAppleItem();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            UseCrateItem();
+        }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             QuitPlaying();
         }

@@ -328,6 +328,10 @@ MonoBehaviour:
   - {fileID: 1611450169}
   - {fileID: 1572478876}
   - {fileID: 1630598973}
+  inventoryTexts:
+  - {fileID: 444321407}
+  - {fileID: 2119261056}
+  - {fileID: 2033220047}
   scoreText: {fileID: 1316102029}
   energyBar: {fileID: 1161796344}
 --- !u!1 &623930682
@@ -528,7 +532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1088558060
 RectTransform:
   m_ObjectHideFlags: 0

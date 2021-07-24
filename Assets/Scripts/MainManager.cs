@@ -5,6 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainManager : MonoBehaviour
 {
+    public int bananaEnergyGain { get; private set; }
+    public int appleEnergyGain { get; private set; }
+    public int crateEnergyGain { get; private set; }
+
     //ENCAPSULATION
     private int m_score = 0;
     public int score {
@@ -40,7 +44,8 @@ public class MainManager : MonoBehaviour
             }
             else if (value > 100)
             {
-                Debug.Log("Max energy reached!");
+                Debug.Log("Energy max!");
+                m_energy = 100f;
             }
             else
             {
@@ -63,9 +68,10 @@ public class MainManager : MonoBehaviour
             {
                 Debug.Log("Max bananas!");
             }
-            else if (value < 0)
+            else if (value < 1)
             {
                 Debug.Log("Just used the last banana!");
+                m_bananaCount = 0;
             }
             else
             {
@@ -89,9 +95,10 @@ public class MainManager : MonoBehaviour
             {
                 Debug.Log("Max apples!");
             }
-            else if (value < 0)
+            else if (value < 1)
             {
                 Debug.Log("Just used the last apple!");
+                m_appleCount = 0;
             }
             else
             {
@@ -115,9 +122,10 @@ public class MainManager : MonoBehaviour
             {
                 Debug.Log("Max supply crates!");
             }
-            else if (value < 0)
+            else if (value < 1)
             {
                 Debug.Log("Just used the last supply crate!");
+                m_crateCount = 0;
             }
             else
             {
@@ -140,6 +148,13 @@ public class MainManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    private void Start()
+    {
+        bananaEnergyGain = 25;
+        appleEnergyGain = 15;
+        crateEnergyGain = 50;
     }
 
     public void StartGame()
