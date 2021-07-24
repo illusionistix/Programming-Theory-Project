@@ -13,17 +13,21 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject coinPrefab;
     [SerializeField] private Text scoreText;
     [SerializeField] private Image energyBar;
+    [SerializeField] private Canvas inventory;
     [SerializeField] private Enemy enemyPrefab;
 
     private Vector3 spawnPos;
     private Vector3 randomPos;
     private float energy;
+    private bool isInventoryActive;
 
     // Start is called before the first frame update
     void Start()
     {
-        energy = 100f;
+        isInventoryActive = false;
+        inventory.gameObject.SetActive(false);
 
+        energy = 100f;
         spawnPos = new Vector3(0f, 0f, 0f);
         
         SpawnPlayer();
@@ -58,16 +62,6 @@ public class GameManager : MonoBehaviour
     }
 
     //ABSTRACTION
-    private void QuitPlaying()
-    {
-#if UNITY_EDITOR
-        EditorApplication.ExitPlaymode();
-#else
-        Application.Quit();
-#endif
-    }
-
-    //ABSTRACTION
     private void UpdateScoreText()
     {
         scoreText.text = "$: " + MainManager.Instance.score;
@@ -88,10 +82,40 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //ABSTRACTION
+    private void ToggleInventory()
+    {
+        if (!isInventoryActive)
+        {
+            isInventoryActive = true;
+            inventory.gameObject.SetActive(true);
+        }
+        else
+        {
+            isInventoryActive = false;
+            inventory.gameObject.SetActive(false);
+        }
+    }
+
+    //ABSTRACTION
+    private void QuitPlaying()
+    {
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#else
+        Application.Quit();
+#endif
+    }
+
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            ToggleInventory();
+        }
+
+            if (Input.GetKeyDown(KeyCode.Escape))
         {
             QuitPlaying();
         }
